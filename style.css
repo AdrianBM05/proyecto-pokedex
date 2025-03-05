@@ -1,43 +1,70 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
+/* Reset de márgenes y padding */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body de la página */
+body {
+    font-family: Arial, sans-serif;
     background-color: #f5f5f5;
-    background-image: url('images/fondo-pokeball.jpg');  /* Pokeball de fondo */
+    background-image: url('images/fondo-pokeball.jpg');  /* Fondo de Pokébola */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    background-opacity: 0.1;
+    min-height: 100vh;  /* Para que ocupe todo el alto */
+    display: flex;
+    flex-direction: column; /* Estructura en columna */
+    justify-content: flex-start;
+    align-items: center;
 }
 
+/* Header - Barra superior con búsqueda */
 header {
-    background-color: rgba(255, 203, 5, 0.9);  /* Amarillo Pokébola con opacidad */
+    width: 100%;  /* Aseguramos que ocupe todo el ancho */
+    background-color: rgba(255, 203, 5, 0.9);
     padding: 20px;
     text-align: center;
     color: #3d7d3f;
     border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
+/* Caja de búsqueda */
 #search {
     padding: 10px;
-    margin-top: 10px;
-    width: 200px;
-    max-width: 100%;
+    width: 80%; /* Ocupa el 80% del ancho de la pantalla */
+    max-width: 400px; /* Limita el tamaño máximo */
 }
 
+/* Botón de búsqueda */
 button {
     padding: 10px 20px;
-    margin-left: 10px;
     background-color: #3d7d3f;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    width: 100%;  /* El botón ocupa todo el ancho disponible */
 }
 
 button:hover {
     background-color: #2f5a2e;
+}
+
+/* Contenedor principal de los Pokémon */
+#pokemonInfo {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 /* Estilo de las cartas de Pokémon */
@@ -76,6 +103,7 @@ button:hover {
 #randomPokemon {
     margin-top: 40px;
     text-align: center;
+    width: 100%;
 }
 
 #randomPokemons {
@@ -86,6 +114,17 @@ button:hover {
 }
 
 /* Media Queries para hacerlo responsive */
+@media screen and (max-width: 1024px) {
+    #search {
+        width: 80%;
+    }
+
+    .pokemon-card {
+        width: 180px;
+        padding: 15px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     header {
         padding: 15px;
@@ -93,12 +132,11 @@ button:hover {
 
     #search {
         width: 100%;
-        margin-top: 15px;
     }
 
     .pokemon-card {
         width: 150px;
-        padding: 15px;
+        padding: 10px;
     }
 }
 
