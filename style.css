@@ -8,11 +8,7 @@
 /* Body de la página */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    background-image: url('images/fondo-pokeball.jpg');  /* Fondo de Pokébola */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: #e0e0e0;  /* Fondo gris claro */
     min-height: 100vh;  /* Para que ocupe todo el alto */
     display: flex;
     flex-direction: column; /* Estructura en columna */
@@ -56,14 +52,14 @@ button:hover {
     background-color: #2f5a2e;
 }
 
-/* Contenedor principal de los Pokémon */
-#pokemonInfo {
-    width: 100%;
+/* Contenedor de Pokémon aleatorios - GRID */
+#randomPokemons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Se adapta automáticamente */
+    grid-gap: 20px;
+    width: 100%;  /* Ocupa el 100% del ancho */
     padding: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    justify-items: center; /* Alinea las tarjetas al centro */
     margin-top: 20px;
 }
 
@@ -72,11 +68,10 @@ button:hover {
     background-color: #f8f8f8;
     padding: 20px;
     border-radius: 15px;
-    width: 200px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     text-align: center;
-    margin: 10px;
+    width: 100%;
 }
 
 .pokemon-card img {
@@ -97,20 +92,6 @@ button:hover {
 /* Hover para las cartas */
 .pokemon-card:hover {
     transform: scale(1.05);
-}
-
-/* Sección de Pokémon aleatorios */
-#randomPokemon {
-    margin-top: 40px;
-    text-align: center;
-    width: 100%;
-}
-
-#randomPokemons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
 }
 
 /* Media Queries para hacerlo responsive */

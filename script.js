@@ -13,20 +13,25 @@ function fetchPokemon(name) {
 }
 
 function displayPokemon(pokemon) {
-    const pokemonInfo = document.getElementById("pokemonInfo");
-    pokemonInfo.innerHTML = `
-        <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
+    const pokemonInfo = document.getElementById("randomPokemons");
+
+    // Crear la nueva tarjeta de Pokémon
+    const pokemonCard = document.createElement("div");
+    pokemonCard.classList.add("pokemon-card");
+    pokemonCard.innerHTML = `
         <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
-        <p>Altura: ${pokemon.height / 10} m</p>
-        <p>Peso: ${pokemon.weight / 10} kg</p>
+        <h3>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
         <p>Tipos: ${pokemon.types.map(type => type.type.name).join(", ")}</p>
     `;
+
+    // Insertar la tarjeta al principio
+    pokemonInfo.insertBefore(pokemonCard, pokemonInfo.firstChild);
 }
 
-// Función para obtener Pokémon aleatorios
+// Función para obtener Pokémon aleatorios (solo al cargar la página)
 function fetchRandomPokemons() {
     const randomPokemonPromises = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 12; i++) {  // Obtener 12 Pokémon aleatorios
         const randomId = Math.floor(Math.random() * 898) + 1;  // Pokémon 1 a 898
         randomPokemonPromises.push(fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`).then(response => response.json()));
     }
